@@ -1,0 +1,430 @@
+/******************** 
+this session is about variables
+and data types
+*/
+// the below js code prints out the message on the browser's developer console
+
+console.log('Hello Python developer,Welcome to JavaScript !!!');
+
+// declared a variable firstName using var keyword and print it out on the console
+var firstName = "Wycliffe";
+console.log(firstName);
+
+// declared a variable secondName using var keyword and print it out on the console
+var secondName = "Muchumi";
+console.log(secondName);
+
+// declared a variable age using var keyword and print it out on the console
+var age = 25;
+console.log(age);
+
+// declared a variable fullAge using var keyword and print it out on the console
+var fullAge = true;
+console.log(fullAge)
+
+var job = "Software Engineer";
+console.log(job);
+
+/******************************************************************************
+this session is about variable mutation
+and type coercion
+*/
+var firstName = "Wycliffe";
+var age = 25;
+
+// type coercion is a process of coverting values' data type to another data type
+console.log(firstName + ' ' + age);
+
+var job, isMarried;
+job = "Software Engineer";
+isMarried = false;
+console.log(firstName + ' a ' + job + ' is of ' + age + ' years old','.Is he married?' + isMarried);
+
+// variable mutation
+age = 'twenty five';
+job = 'driver';
+alert(firstName + ' a ' + job + ' is of ' + age + ' years old' + '. Is he married?' + isMarried);
+
+var lastName = prompt('What is his last name?');
+console.log(firstName + ' ' + lastName);
+
+/***********************************
+ * Basic Operators
+ */
+
+// math operators
+var currentYear, mainaAge, miriamAge, wairimuAge;
+currentYear = 2020;
+mainaAge = 26;
+miriamAge = 21;
+wairimuAge = 23;
+
+mainaDOB = currentYear - mainaAge;
+console.log(mainaDOB);
+miriamDOB = currentYear - miriamAge;
+console.log(miriamDOB);
+wairimuDOB = currentYear - wairimuAge;
+console.log(wairimuDOB);
+
+// logical operators
+var ageOlder = mainaAge > miriamAge;
+console.log(ageOlder);
+
+//javaScript typeof operator
+
+console.log(typeof ageOlder);
+console.log(typeof miriamAge);
+console.log(typeof wairimuAge);
+console.log(typeof 'Maina is older than Miriam');
+
+var x;
+console.log(typeof x);
+
+// operator precedence(means which operator is executed first)
+// multiple operators
+
+var currentYear = 2020;
+var mainaDOB = 1994;
+var fullAge = 18;
+var isfullAge = currentYear - mainaDOB >= fullAge; //true
+console.log(isfullAge);
+console.log(typeof isfullAge);
+
+//Grouping(()), always highest precedence than other operators
+
+var mainaAge = currentYear - mainaDOB;
+var miriamAge = currentYear - miriamDOB;
+var ageAverage = (mainaAge + miriamAge) / 2;
+console.log(ageAverage);
+
+// multiple assignments
+
+var x , y;
+x = y = (3 + 5) * 4 - 6; // 8 * 4 - 6 || 32 - 6 || 26
+console.log(x, y);
+
+// more operators
+x = x * 2; // same as :
+// x *= 2;
+console.log(x);
+
+
+/**************************
+ * if else statements
+ */
+var firstName = "John";
+var civilStatus = "single";
+
+if(civilStatus === 'married') {
+    console.log(firstName + ' is married');
+} else {
+    console.log(firstName + ' is single')
+}
+// using a boolean variable
+var isMarried = "true";
+if (isMarried){
+    console.log(firstName + ' is married');
+} else {
+    console.log(firstName + ' is not married');
+}
+
+// BMI Calculator
+markMass = 78;
+markHeight = 1.69;
+
+johnMass = 92;
+johnHeight = 1.95;
+
+markBMI = markMass / (markHeight*markHeight);
+johnBMI = johnMass / (johnHeight*johnHeight);
+
+
+if(markBMI > johnBMI) {
+    console.log('Mark\'s BMI is greater than John\'s');
+} else {
+    console.log('John\'s BMI is greater than Mark\'s');
+}
+
+/*******************************
+ * Boolean Logic
+ */
+
+var firstName, age;
+firstName = "John";
+age = 16;
+
+if(age < 13) {
+    console.log(firstName + ' is a kid');
+} else if (age >=13 && age < 20){ 
+    console.log(firstName + ' is a teenager');
+} else if(age >= 20 && age < 30 ) {
+    console.log(firstName + ' is a young man');
+} else {
+    console.log(firstName + ' is an adult');
+}
+
+/*************************************
+ * The Ternary operator(or conditional operator) and switch statements
+ * is called Ternary because it has three operands
+ */
+
+var firstName, age;
+
+firstName = "John";
+age = 15;
+age >= 18 ? console.log(firstName + ' is allowed to drink a bottle of beer')
+: console.log(firstName + ' is only allowed to drink juice');
+
+// assigning values to variables using the ternary operator
+var drink = age >= 18 ? 'beer' : 'juice';
+console.log(drink);
+
+// using an if else statement
+if(age>=18){
+    var drink = 'beer';
+}else{
+    var drink = 'juice';
+}
+
+// switch statements
+// you can use switch statements to clean up if else block statements
+var firstName = "John";
+var job = "Software Engineer";
+
+switch(job){
+    case 'Software Engineer':
+        console.log(firstName + ' develops scalable software products');
+        break;
+    case 'Governor':
+        console.log(firstName + ' runs the daily operations of a county government');
+        break;
+    case 'Designer':
+        console.log(firstName + ' designs beautiful websites');
+        break;
+    default:
+        console.log(firstName + 'does something else');       
+}
+
+// implementing the if else statement using a switch statement
+// evaluate true to make the switch statement work like an if else statement with ranges
+age = 35;
+switch(true){
+    case age < 13:
+        console.log(firstName +' is a kid');
+        break;
+    case age >= 13 && age < 20:
+        console.log(firstName + ' is a teenager');
+        break;
+    case age >= 20 && age < 30:
+        console.log(firstName + ' is a young man');
+        break;
+    default:
+        console.log(firstName + ' is an adult');   
+}
+
+/***********************************************
+ * Falsy and truthy values and equality operators
+ */
+
+// In JS, a Falsy value is a value considered false when evaluated in a if else condition statement
+// Falsy values in JS include zero, undefined, null, empty string, NaN
+// In JS, a Truthy value is a value considered true when evaluated in a if else condition statement
+
+// when variable is undefined
+var height;
+
+if (height) {
+    console.log('variable is defined');
+} else {
+    console.log('variable has NOT been defined');
+}
+
+// when variable is zero
+var height = 0;
+
+if (height) {
+    console.log('variable is defined');
+} else {
+    console.log('variable has NOT been defined');
+}
+
+// using || operator(OR) to evaluate a variable as defined despite been assigned zero as its actual value  
+// common pattern to evaluate is a variable is defined or not
+
+// Example one:
+var height = 0;
+
+if(height || height === 0) {
+    console.log('variable is defined');
+} else {
+    console.log('variable has NOT been defined');
+}
+
+// Example two
+var height = '';
+if (height || height === 0) {
+    console.log('variable is defined');
+} else {
+    console.log('variable has NOT been defined');
+}
+
+// Equality operators
+var height = 23;
+
+if (height=='23'){
+    console.log('The == operator does type coercion!');
+}
+
+/**************************************************
+ * Functions in JavaScript
+ */
+// Functions are like containers that hold some lines of code and we can pass arguments in them to return results
+
+function calculateAge(birthYear){
+    return 2020 - birthYear;
+}
+// the results returned by the calculateAge function are stored in a variable called  Age then printed on the console
+var Age = calculateAge(1994);
+console.log('Your age is ' + Age);
+
+// functions can call other functions
+function remainingYearsToRetirement(birthYear, firstName){
+    var age = calculateAge(birthYear);
+    var retirementYears = 65 - age;
+    if (retirementYears > 0) {
+        console.log(firstName + ' retires in ' + retirementYears + ' years');
+    } else {
+        console.log(firstName + ' is already retired');
+    }
+    
+}
+
+remainingYearsToRetirement(1994, 'Wycliffe');
+remainingYearsToRetirement(1999, 'Miriam');
+remainingYearsToRetirement(1998, 'Shaey');
+
+/**********************************
+ * Function statements and expressions
+ */
+// function declaration
+function whatDoYouDo(job, firstName){
+
+}
+// function expression
+// store function expression in a variable
+var whatDoYouDo = function(job, firstName) {
+    switch (job) {
+        case 'instructor':
+            // return statement returns results and finishes the function therefore no need for a break statement
+            return firstName + ' teaches freshmen and newbies how to code.';
+        case 'driver':
+            return firstName + ' drives an uber in Nairobi.';
+        case 'Software Engineer':
+            return firstName + ' builds scalable and quality software products.';
+        default:
+            return firstName + ' does something else.';          
+    }
+}
+console.log((whatDoYouDo('Software Engineer', 'Wycliffe')));
+console.log((whatDoYouDo('instructor', 'Miriam')));
+console.log((whatDoYouDo('driver', 'Moses')));
+console.log((whatDoYouDo('beautician', 'Shaey')));
+
+/* Differences between statements and expressions is that:
+JavaScript Expressions always produce a single value e.g 2+3 which is 5.
+JavaScript statements only perform actions i.e if else statements, for loops, while loops, etc.
+In other words JavaScript statements don't produce immediate values.
+*/
+
+/******************************************************************
+ * Arrays
+ */
+// Ways of declaring arrays in JavaScript
+// Commonly used:
+var names = ['John', 'Michael', 'Wycliffe'];
+
+// Rarely used:
+var birthYears = new Array(1989, 1966, 1994);
+
+// Accessing elements in an array
+// Indices in JavaScript Arrays start from zero
+console.log(names[0]);
+
+// Accessing all elements in names array
+console.log(names);
+
+// Getting total number of elements in names array using the length function
+console.log(names.length);
+
+// Changing elements of an array
+names[2] = 'Anna';
+console.log(names);
+
+// Adding element to a position that does not exist in an array
+names[names.length] = 'Maurice';
+console.log(names);
+
+// Different data types in one array
+var Wycliffe = ['Wycliffe', 'Muchumi', 'Software Engineer', '25', 'false'];
+
+// Array Methods
+// push() method, adds a new element to our array
+Wycliffe.push('blue');
+
+// unshift() adds a new element at the beginning of the array
+Wycliffe.unshift('Mr.');
+console.log(Wycliffe);
+
+// pop(), removes last element of an array
+Wycliffe.pop()
+console.log(Wycliffe);
+
+// shift(), removes first element of an array
+Wycliffe.shift()
+console.log(Wycliffe);
+
+// indexOf(), returns the position of the arguement passed
+console.log(Wycliffe.indexOf('Muchumi'));
+
+// used to check if a specififed element is present in an array
+var isSoftwareEngineer = Wycliffe.indexOf('Software Engineer') === -1 ?
+'Wycliffe is not a Software Engineer' : 'Wycliffe is a Software Engineer';
+console.log(isSoftwareEngineer);
+
+/********************************************
+ * Objects and Properties
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
