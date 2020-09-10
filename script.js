@@ -15,7 +15,7 @@ var secondName = "Muchumi";
 console.log(secondName);
 
 // declared a variable age using var keyword and print it out on the console
-var age = 25;
+var age = 26;
 console.log(age);
 
 // declared a variable fullAge using var keyword and print it out on the console
@@ -30,7 +30,7 @@ this session is about variable mutation
 and type coercion
 */
 var firstName = "Wycliffe";
-var age = 25;
+var age = 26;
 
 // type coercion is a process of coverting values' data type to another data type
 console.log(firstName + ' ' + age);
@@ -41,7 +41,7 @@ isMarried = false;
 console.log(firstName + ' a ' + job + ' is of ' + age + ' years old','.Is he married?' + isMarried);
 
 // variable mutation
-age = 'twenty five';
+age = 'twenty six';
 job = 'driver';
 alert(firstName + ' a ' + job + ' is of ' + age + ' years old' + '. Is he married?' + isMarried);
 
@@ -365,7 +365,7 @@ names[names.length] = 'Maurice';
 console.log(names);
 
 // Different data types in one array
-var Wycliffe = ['Wycliffe', 'Muchumi', 'Software Engineer', '25', 'false'];
+var Wycliffe = ['Wycliffe', 'Muchumi', 'Software Engineer', '26', 'false'];
 
 // Array Methods
 // push() method, adds a new element to our array
@@ -394,6 +394,61 @@ console.log(isSoftwareEngineer);
 /********************************************
  * Objects and Properties
  */
+// Object Literal
+var person = {
+    firstName: 'Wycliffe',
+    lastName: 'Muchumi',
+    age: 26,
+    occupation: 'Software Engineer',
+    birthYear: 1994,
+    family: ['Joyce', 'Abby', 'Miriam']
+};
+console.log(person);
+
+// Accessing person object properties
+console.log(person.firstName);
+console.log(person.lastName);
+console.log(person.family);
+
+// Accessing person object properties using brackets
+console.log(person['firstName']);
+console.log(person['lastName']);
+console.log(person['family']);
+
+// Using . notation to mutate object property
+person.lastName = 'Maina';
+console.log(person);
+
+// Using [] brackets to mutate object property
+person['lastName'] = 'Muchumi';
+console.log(person);
+
+// Second method of declaring a new object
+// new Object syntax
+var person = new Object();
+person.firstName = 'Wycliffe';
+person.lastName = 'Muchumi';
+person.age = 26;
+person.occupation = 'Software Engineer';
+console.log(person);
+
+/********************************************
+ * Objects and Methods
+ */
+// Using this to refer to person object
+var person = {
+    firstName: 'Wycliffe',
+    lastName: 'Muchumi',
+    occupation: 'Software Engineer',
+    birthYear: 1994,
+    family: ['Joyce', 'Abby', 'Miriam'],
+    calcAge: function() {
+        return 2020 - this.birthYear;
+    }
+};
+// calling function
+console.log(person.calcAge(1994));
+
 
 
 
