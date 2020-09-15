@@ -32,18 +32,18 @@ and type coercion
 var firstName = "Wycliffe";
 var age = 26;
 
-// type coercion is a process of coverting values' data type to another data type
+// type coercion is a process of converting values' data type to another data type
 console.log(firstName + ' ' + age);
 
 var job, isMarried;
 job = "Software Engineer";
 isMarried = false;
-console.log(firstName + ' a ' + job + ' is of ' + age + ' years old','.Is he married?' + isMarried);
+console.log(firstName + ' a ' + job + ' is ' + age + ' years old','.Is he married?' + isMarried);
 
 // variable mutation
 age = 'twenty six';
 job = 'driver';
-alert(firstName + ' a ' + job + ' is of ' + age + ' years old' + '. Is he married?' + isMarried);
+alert(firstName + ' a ' + job + ' is ' + age + ' years old' + '. Is he married?' + isMarried);
 
 var lastName = prompt('What is his last name?');
 console.log(firstName + ' ' + lastName);
@@ -448,6 +448,175 @@ var person = {
 };
 // calling function
 console.log(person.calcAge(1994));
+
+/****************************************
+ * Loops and Iteration
+ */
+
+// for loop
+for (var i = 0; i < 10; i++ ) {
+    console.log(i);
+}
+
+var Wycliffe = ['Wycliffe', 'Muchumi', 'Software Engineer', 26, 'false'];
+for (var i = 0; i < Wycliffe.length; i++) {
+    console.log(Wycliffe[i]);
+}
+
+// while loop
+var i = 0;
+while(i < Wycliffe.length) {
+    console.log(Wycliffe[i]);
+    i++;
+}
+
+// continue and break statements
+// continue
+var Wycliffe = ['Wycliffe', 'Muchumi', 'Software Engineer', 26, 'false'];
+for (var i = 0; i < Wycliffe.length; i++) {
+    // !== means different
+    if (typeof Wycliffe[i] !== 'string') continue;
+    console.log(Wycliffe[i]);
+}
+
+// break
+for (var i = 0; i < Wycliffe.length; i++) {
+    if (typeof Wycliffe[i] !== 'string') break;
+    console.log(Wycliffe[i]);
+}
+
+// Looping backwards
+for (var i = Wycliffe.length - 1; i >= 0; i--) {
+    console.log(Wycliffe[i]);
+}
+
+/*****************************
+ * Hoisting 
+ */
+// Normal function declaration
+function calculateAge(birthYear) {
+    console.log(2020 - birthYear);
+}
+calculateAge(1994);
+
+// Hoisting in practice
+// Below code execution occurs in global execution context
+// Function is used before been declared
+// calculateAge is stored in variable object before the code is executed hence made 
+// available for use 
+
+calculateAge(1994);
+function calculateAge(birthYear) {
+    console.log(2020 - birthYear);
+}
+
+// With function expressions
+
+var retirement = function(birthYear) {
+    console.log(65 - (2020 - birthYear));
+}
+retirement(1994);
+
+// Hoisting
+// Below will throw an error since hoisting works with function declarations only
+
+retirement(1994);
+var retirement = function(birthYear) {
+    console.log(65 - (2020 - birthYear));
+}
+
+// Hoisting with variables
+// Below code will throw undefined
+// In creation phase of variable object, code is scanned for variable declarations then set to undefined
+
+console.log(age);
+var age = 26;
+// console.log(age);
+
+function foo() {
+    var age = 46;
+    // prints 46 since the variable age is stored in the variable object in execution context object of function foo
+    console.log(age);
+}
+foo();
+
+// prints 26 since the variable age is stored in the variable object in global execution context object
+console.log(age);
+
+// Scoping
+// Code below is an example of lexical scoping
+var a = 'Hello';
+first();
+
+function first() {  // has access to scope of the global variable a 
+    var b = 'Hi!';
+    second();
+
+    function second() {  // has access to scope of the first() function and the global scope of global variable a
+        var c = 'Hey';
+        console.log(a + b + c);
+        third();
+    }
+}
+
+// Has access to scope of global variable a and scope of local variable d
+function third() {
+    var d = 'Muchumi';
+    console.log(a+d);
+}
+
+/*************************************************
+ * The this keyword
+ */
+// In a regular function call, the this keyword points at the global object, which is the window object in the browser
+// In a method(function within an object) call, the this variable points to the object that is calling the method
+// The this keyword is not assigned a value until a function where it is defined is actually called
+
+// window object is the default object
+// console.log(this);
+
+calculateAge(1994);
+function calculateAge(birthYear) {
+    console.log(2020 - birthYear);
+    console.log(this);
+}
+
+var person = {
+    firstName: 'Wycliffe',
+    lastName: 'Muchumi',
+    occupation: 'Software Engineer',
+    birthYear: 1994,
+    family: ['Joyce', 'Abby', 'Miriam'],
+    calculateAge: function() {
+        console.log(this);
+        console.log(2020 - this.birthYear);
+
+        // below this keyword will point to the window object even after being declared in the calculateAge() method
+        // this is because it is a regular function
+        function innerFunction() {
+            console.log(this);
+        }
+        innerFunction();
+    }
+}
+person.calculateAge();
+
+// Below JS code demonstrates method borrowing
+var mammal = {
+    name: 'lion',
+    color: 'brown',
+    birthYear: 2001,
+    weight: '85 kg'
+};
+mammal.calculateAge = person.calculateAge;
+mammal.calculateAge();
+
+
+
+
+
+
+
 
 
 
