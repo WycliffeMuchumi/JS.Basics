@@ -611,6 +611,115 @@ var mammal = {
 mammal.calculateAge = person.calculateAge;
 mammal.calculateAge();
 
+// Advanced JavaScript
+// Object
+
+var Wycliffe = {
+    name: 'Wycliffe',
+    birthYear: 1994,
+    occupation: 'Software Engineer'
+};
+
+// Function Constructor/ BluePrint
+// Function Constructor creates a new Function object.
+// Calling the constructor directly can create functions dynamically, but suffers from security and performance issues
+// Function Constructor identifier(name) to start with a capital letter
+
+var Person = function (name, birthYear, occupation) {
+    this.name = name;
+    this.birthYear = birthYear;
+    this.occupation = occupation;
+    this.calculateAge = function () {
+        console.log(2020-this.birthYear);
+    }
+}
+
+Person.prototype.calculateAge = function () {
+    console.log(2020-this.birthYear);
+}
+
+Person.prototype.lastName = 'Maina';
+
+// Creating an instance/object of the Person constructor/ Instantiation
+// new operator creates a new empty object, then the person constructor function is called with arguements specified
+
+var Wycliffe = new Person('Wycliffe', 1994, 'Software Engineer');
+var Miriam = new Person('Miriam', 1999, 'Economist and Finance Specialist');
+var Joyce = new Person('Joyce', 1997, 'Nutritionist');
+var Maurice = new Person('Maurice', 1998, 'Software Engineer');
+
+Wycliffe.calculateAge();
+Miriam.calculateAge();
+Joyce.calculateAge();
+Maurice.calculateAge();
+
+console.log(Wycliffe.lastName);
+console.log(Miriam.lastName);
+console.log(Joyce.lastName);
+console.log(Maurice.lastName);
+
+
+// Using Object.create instead of function constructor
+// Object.create method
+// Helps in complex inheritance operations since it specifies which object is the prototype
+var personPrototype = {
+    calculateAge: function() {
+        console.log(2020 - this.birthYear);
+    }
+};
+
+var wycliffe = Object.create(personPrototype);
+wycliffe.name = 'Wycliffe';
+wycliffe.birthYear = 1994;
+wycliffe.occupation = 'Software Engineer';
+
+var miriam = Object.create(personPrototype, 
+{
+    name: { value: 'Wycliffe' },
+    birthYear: { value: 1994 },
+    occupation: { value: 'Software Engineer' }
+});
+
+// Primitives vs Objects
+// Primitives
+
+var a = 23;
+var b = a;
+// Mutate a 
+a = 45;
+console.log(a);
+console.log(b);
+
+// Objects
+var objectOne = {
+    name: 'Asher',
+    age: 7
+};
+
+var objectTwo = objectOne;
+objectOne.age = 14;
+console.log(objectOne.age);
+console.log(objectTwo.age);
+
+// Functions
+var age = 26;
+var object = {
+    name: 'Wycliffe',
+    city: 'Nairobi'
+};
+
+function change(a, b) {
+    a = 30;
+    b.city = 'New York';
+}
+
+change(age, object);
+console.log(age);
+console.log(object.city);
+
+
+
+
 
 
 
