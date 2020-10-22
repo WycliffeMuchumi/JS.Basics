@@ -6,6 +6,7 @@ and data types
 
 console.log('Hello Python developer,Welcome to JavaScript !!!');
 
+// EcmaScript5(ES5)
 // declared a variable firstName using var keyword and print it out on the console
 var firstName = "Wycliffe";
 console.log(firstName);
@@ -716,6 +717,207 @@ function change(a, b) {
 change(age, object);
 console.log(age);
 console.log(object.city);
+
+// First class functions
+// Passing functions as arguments
+
+var years = [1994, 1997, 1999, 2010, 2015];
+
+// Generic function
+function arrayCalculate(arr,func) {
+    var arrResults = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrResults.push(func(arr[i]));
+    }
+    return arrResults;
+}
+
+function calculateAge(element) {
+    return 2020 - element;
+}
+
+// Will return true or false 
+function isFullAge(element) {
+    return element >= 18;
+}
+
+function maxHeartRate(element) {
+    if (element >= 18 && element <= 81) {
+        // round function rounds off to next integer
+        return Math.round(206.9 - (0.67 * element));
+    } else {
+        return -1;
+    }   
+}
+var ages = arrayCalculate(years, calculateAge);
+var fullAges = arrayCalculate(ages, isFullAge);
+var rates = arrayCalculate(ages, maxHeartRate);
+console.log(ages);
+console.log(fullAges);
+console.log(rates);
+
+// Functions returning functions
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you please explain what UX design is?');
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log(name + ', what subject do you teach?');
+        } 
+    } else {
+        return function(name) {
+            console.log('Hello' + name + ', what do you do?');
+        }
+    }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+// Calling variable teacherQuestion which is now a function
+teacherQuestion('Harvey');
+designerQuestion('Wycliffe');
+
+// Second technique on how to do it
+interviewQuestion('designer')('Maurice');
+
+// Immediately Invoked Function Expressions(IIFE)
+function game() {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+}
+game();
+
+// IIFE(Data Privacy & Code Modularity)
+(function(excellent){
+    var score = Math.random() * 10;
+    console.log(score >= 5 - excellent);
+})(5);
+
+// Closures
+function retirement(retirementAge){
+    var a = ' years left until retirement.';
+    return function(birthYear){
+        var age = 2020 - birthYear;
+        console.log((retirementAge - age) + a);
+    }
+}
+
+// var retirementUS = retirement(66);
+// var retirementGermany = retirement(65);
+// var retirementIceland = retirement(67);
+
+// retirementGermany(1994);
+// retirementUS(1994);
+// retirementIceland(1994);
+
+
+// Using closures
+// Decision is made inside function being returned unlike previous function interviewQuestion
+// Power of closures
+function interviewQuestion(job){
+    return function(name){
+        if(job === 'designer'){
+            console.log(name + ', can you please explain what UX design is?');
+        } else if(job === 'teacher'){
+            console.log(name + ', what subject do you teach?');
+        } else {
+            console.log('Hello' + name + ', what do you do?');
+        }
+    }
+}
+
+interviewQuestion('designer')('Wycliffe');
+interviewQuestion('teacher')('Maurice');
+
+// Bind, Call and Apply
+var wycliffe = {
+    name: 'Wycliffe',
+    age: 26,
+    job: 'Software Engineer',
+    presentation: function(style, timeOfDay){
+        if(style === 'formal'){
+            console.log('Good ' + timeOfDay + ', Ladies and Gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        } else if (style === 'friendly'){
+            console.log('Hey what\'s up?, I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.Have a nice ' + timeOfDay + '.');
+        }
+    }
+};
+
+var anne = {
+    name: 'Anne',
+    age: 25,
+    job: 'media personality',
+};
+
+wycliffe.presentation('formal', 'morning');
+// Method Borrowing using call method
+// Call helps set the this variable as the first arguement
+wycliffe.presentation.call(anne, 'friendly', 'afternoon');
+
+// Using apply instead of call 
+// apply accepts array of elements passed as a parameter
+wycliffe.presentation.apply(anne, ['friendly', 'afternoon']);
+
+// Using bind
+// bind is similar to call method 
+// allows us to set the this variable explicitly however difference is bind does not call function immediately but generates a copy of the function
+var wycliffeFriendly = wycliffe.presentation.bind(wycliffe, 'friendly');
+wycliffeFriendly('morning');
+wycliffeFriendly('night');
+
+var anneFormal = wycliffe.presentation.bind(anne, 'formal');
+anneFormal('afternoon');
+
+// EcmaScript6/EcmaScript2015
+// variable declarations with let and const
+
+// Recap of ES5
+var name5 = 'Jane Smith';
+var age5 = 23;
+// Mutate name5
+name5 = 'Jane Miller';
+console.log(name5);
+
+// ES6
+// const is for variable you dont want to change/mutate
+// let is for variables you may need to change/mutate
+const name6 = 'Jane Smith';
+let age6 = 25;
+console.log(name6);
+
+// variables declared with var in ES5 are function scoped and
+// variables declared with let and const in ES6 are block scoped
+
+// ES5
+function driversLicense5(passedTest){
+    if(passedTest){
+        var firstName = 'Wycliffe';
+        var birthYear = 1994;
+        console.log(firstName + ', born in ' + birthYear + ', is now officially allowed to drive a car.');
+    }
+}
+ 
+driversLicense5(true);
+
+// ES6
+function driversLicense6(passedTest){
+    if(passedTest){
+        let firstName = 'Wycliffe';
+        const birthYear = 1994;
+        console.log(firstName + ', born in ' + birthYear + ', is now officially allowed to drive a car.');
+    }
+    // no longer have access to variables firstName and birthYear
+    // will throw an error since let and const are block scoped(block is all code wrapped in curly braces)
+    // console.log(firstName + ', born in ' + birthYear + ', is now officially allowed to drive a car.');
+}
+ 
+driversLicense6(true);
+
+
+
+
 
 
 
