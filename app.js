@@ -934,12 +934,22 @@ function calcAge(yearOfBirth){
     return 2021 - yearOfBirth;
 }
 // ES5
-console.log('This is ' + firstName + ' ' + lastName + '.Today he is ' + calcAge(1994) + ' years old.');
+console.log('This is ' + firstName + ' ' + lastName + '.He was born in ' + yearOfBirth + '.Today he is ' + calcAge(1994) + ' years old.');
+
+// ES6
+// Template literals
+console.log(`This is ${firstName} ${lastName}.He was born in ${yearOfBirth}.Today he is ${calcAge(yearOfBirth)} years old.`)
+
+// String methods in ES6
+const fullName = `${firstName} ${lastName}`;
+
+console.log(fullName.startsWith('W'));
+console.log(fullName.endsWith('i'));
+console.log(fullName.includes('uchum'));
+console.log(`${firstName} `.repeat(5));
 
 
-
-
-
+// Arrow functions in ES6
 
 
 
