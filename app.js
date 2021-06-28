@@ -933,6 +933,7 @@ const yearOfBirth = 1994;
 function calcAge(yearOfBirth){
     return 2021 - yearOfBirth;
 }
+// ES5
 console.log('This is ' + firstName + ' ' + lastName + '.Today he is ' + calcAge(1994) + ' years old.');
 
 
