@@ -979,13 +979,13 @@ console.log(ages6);
 
 // Arrow functions get to share the surrounding this keyword(this keyword of the function they are written in)
 // Arrow functions have a lexical this keyword
-// ES5
 
+// ES5
 var box5 = {
     color: 'green',
     position: 1,
     clickOnMe: function(){
-        // assuming we have a html div class lement by the class name of green
+        // we have a html div class element by the class name of green
         // storing this into self
         // hack around to enable us access the box object
         var self = this;
@@ -1004,7 +1004,7 @@ const box6 = {
     color: 'green',
     position: 1,
     clickOnMe: () => {
-        // assuming we have a html div class lement by the class name of green
+        // we have a html div class element by the class name of green
         document.querySelector('.green').addEventListener('click',
        () => {
             var str = 'This is box number ' + this.position + ' and it is ' + this.color;
@@ -1040,6 +1040,103 @@ console.log(a);
 console.log(b);
 
 // Arrays in ES6
+const boxes = document.querySelectorAll('.box');
+
+// changing background color
+// converting the list in boxes into an ES6 Array
+const boxesArray6 = Array.from(boxes);
+boxesArray6.forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+// Loops in ES6
+// looping over an array using for of loop
+// Using for of loop can allow use to use continue or break statements which we cannot use using forEach and map methods
+for (const element of boxesArray6) {
+    if (element.className === 'box blue'){
+        continue;
+    }   
+    element.textContent = 'I changed to blue';
+}
+
+// Array Methods in ES6
+// getting the index of the element that is greater than 18 years full age
+let ages = [12, 17, 8, 21, 14, 11];
+fullAge = ages.findIndex(cur => cur >= 18);
+console.log(fullAge);
+
+// retrieving the element at that index
+fullAge2 = ages.find(cur => cur >= 18);
+console.log(fullAge2);
+
+// The Spread Operator in ES6 !
+// Good way to expand the elements of an array
+
+// function that adds four ages
+function addFourAges(a,b,c,d){
+    return a + b + c + d;
+}
+var sum1 = addFourAges(26, 28, 35, 42);
+console.log(sum1);
+
+// Passing array into the function
+// ES5
+var studentAges = [26, 28, 35, 42, 54];
+ 
+// apply method receives an array
+var sum2 = addFourAges.apply(null, studentAges);
+console.log(sum2);
+
+// ES6 
+// The Spread Operator
+const sum3 = addFourAges(...studentAges);
+console.log(sum3);
+
+// Joining two arrays using the spread operator
+const muchumiFamily = ['Muchumi', 'Maina', 'Wangari', 'Wairimu', 'Njambi', 'Njeri'];
+
+const annaFamily = ['Maurice', 'Anna', 'Taraji', 'Sharon'];
+
+const bigFamily = [...muchumiFamily, 'Asher', ...annaFamily];
+console.log(bigFamily);
+
+// All query selectors return a node list
+// Using the spread operator on the node list
+const heading = document.querySelector('h1');
+
+const boxes2 = document.querySelectorAll('.box');
+
+const all = [heading, ...boxes2];
+
+// Converting our (all) box node list into an array
+Array.from(all).forEach(cur => cur.style.color = 'purple');
+
+// Function Parameters
+// Rest parameters in ES6
+// Rest parameters allow us to pass an abirtrary number of arguments into a function and 
+// convert them into an array
+function isFullAge6(limit, ...years){
+    // console.log(years);
+    years.forEach(cur => console.log((2021 - cur) >= limit));
+}
+isFullAge6(18, 1994, 1997,1998,1999);
+/*** 
+NB: Spread Operator is used in function calls
+    Rest parameter is used in function declaration
+***/
+
+// Default Parameters in ES6
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
