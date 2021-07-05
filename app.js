@@ -917,7 +917,7 @@ driversLicense6(true);
 
 // Blocks & IIFES
 // IIFES deny access to data to unauthorized users
-// IIFES ensure data privacy
+// IIFES ensure data privacy/security
 {
     const a = 1;
     let b = 2;
