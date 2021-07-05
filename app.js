@@ -1124,9 +1124,141 @@ NB: Spread Operator is used in function calls
 ***/
 
 // Default Parameters in ES6
+// We use Default Parameters when we want one or more parameters of a function to be preset/default value
+// Function constructor
+function muchumiPerson(firstName, lastName, yearOfBirth = 1994, nationality = 'Kenyan'){
+    this.firstName = firstName
+    this.lastName = lastName
+    this.yearOfBirth = yearOfBirth
+    this.nationality = nationality
+}
+var wycliffe = new muchumiPerson('Wycliffe', 'Muchumi');
+var miriam = new muchumiPerson('Miriam', 'Muchumi', 1999, 'South African');
 
 
+// Maps in ES6(This is a Data Structure in ES6)
+// We can use any primitive value type while using maps, unlike objects in ES5 where we only work with strings to map values to keys 
 
+const question = new Map();
+question.set('question', 'What is the official name of the latest major JavaScript version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'correct answer: D');
+question.set(false, 'wrong, please try again!');
+
+// Retrieving data from our map
+// We use get instead of set
+console.log(question.get('question'));
+
+// Get the size/length of our map
+console.log(question.size);
+
+// Delete data from our map
+question.delete(4);
+
+// Check certain data is present in a map
+if (question.has(2)) {
+    console.log('Answer 2 is here');
+}
+
+// Clear all data in a map
+// question.clear();
+
+// Iterate through our map
+// question.forEach((value, key) => 
+// console.log(`This is ${key}, and it is set to ${value}`));
+
+// Using for of
+for (let [key, value] of question.entries()){
+    if (typeof(key) === 'number'){
+        console.log(`Answer ${key}: ${value}`);
+    }
+}
+
+const ans = parseInt(prompt(`Write in your answer:`));
+console.log(question.get(ans === question.get('correct')));
+
+// Classes in ES6
+class Person {
+    constructor(name, yearOfBirth, job){
+        this.name = name
+        this.yearOfBirth = yearOfBirth
+        this.job = job
+    }
+    calculateAge(){
+        var age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+}
+// Instance of Class Person
+const muchumi = new Person('Muchumi', 1994, 'Software Engineer');
+
+// Subclass of the Super class Person
+// Demonstrating inheritance
+class Developer extends Person{
+    constructor(name, yearOfBirth, job, hackathonCompetitions, medals){
+        // calls the super/parent class
+        super(name, yearOfBirth, job);
+        this.hackathonCompetitions = hackathonCompetitions;
+        this.medals = medals;
+    }
+    wonMedal(){
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+// Object
+const muchumiDeveloper = new Developer('Muchumi', 1994, 'Software Engineer', 3, 7);
+
+muchumiDeveloper.wonMedal();
+muchumiDeveloper.calculateAge();
+
+// Asynchronous JavaScript in ES6
+const second = () => {
+    setTimeout(() => {
+        console.log('Hey Async, how are you doing, that was a 2 second blink bruh!?');
+    }, 2000);
+}
+const first = () => {
+    console.log('Hey there');
+    second();
+    console.log('The end');
+}
+first();
+
+
+// Promises in ES6
+// A promise is an object that keeps track of whether a certain event has happened or not
+// Determines what happens after the event has occurred
+const getIDs = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve([435, 456, 654, 900]);
+    }, 1500);
+});
+// Using then method which is the handler that returns the successful results of a 
+// promise(results of the resolve method since the setTimeout() method never fails)
+getIDs
+.then(IDs => {
+    console.log(IDs);
+})
+.catch(error => {
+    console.log('Error !!!');
+})
+
+// From Promises to AsyncAwait
+// AsyncAwait in ES6
+// Used to consume promises
+// NB: Async always returns a promise
+async function getRecipes(){
+    // Consuming the getIDs promise above on line 1244
+    const IDs = await getIDs;
+    console.log(IDs);
+}
+getRecipes();
 
 
 
